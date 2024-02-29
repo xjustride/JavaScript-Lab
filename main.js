@@ -27,6 +27,4 @@ inputs.addEventListener(`change`, ()=>{
     sumval.textContent = `Suma wartości to: ` + sum
     avgval.textContent = `Średnia wartość to: ` + sum / 4
 
-    
-
 })
