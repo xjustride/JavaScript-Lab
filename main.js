@@ -1,8 +1,5 @@
-const input1 = document.querySelector('#val1')
-const input2 = document.querySelector('#val2')
-const input3 = document.querySelector('#val3')
-const input4 = document.querySelector('#val4')
 const inputs = document.querySelector(`#inputs`)
+const inputsAll = inputs.querySelectorAll(`input`)
 // console.dir(input1)
 // console.log(input1.value)
 
@@ -17,14 +14,29 @@ const avgval = document.querySelector(`#avg`)
 // reagowanie na klikniecie
 const przeliczBtn = document.querySelector(`#przelicz`)
 inputs.addEventListener(`change`, ()=>{
-    const min = Math.min(input1.value, input2.value, input3.value, input4.value)
-    const max = Math.max(input1.value, input2.value, input3.value, input4.value)
-    const sum = parseInt(input1.value) + parseInt(input2.value) + parseInt(input3.value) + parseInt(input4.value)
+    const min = Math.min(inputsAll[0].value.length, inputsAll[1].value, inputsAll[2].value, inputsAll[3].value)
+    const max = Math.max(inputsAll[0].value, inputsAll[1].value, inputsAll[2].value, inputsAll[3].value)
+    const sum = parseInt(inputsAll[0].value) + parseInt(inputsAll[1].value) + parseInt(inputsAll[2].value) + parseInt(inputsAll[3].value);
     
       
     minval.textContent = `Wartość minimalna to: ` + min
     maxval.textContent = `Wartość maksymalna to: ` + max
     sumval.textContent = `Suma wartości to: ` + sum
-    avgval.textContent = `Średnia wartość to: ` + sum / 4
+    avgval.textContent = `Średnia wartość to: ` + sum / inputsAll.length
 
+})
+
+const addBtn = document.querySelector(`#dodaj`)
+addBtn.addEventListener(`click`, ()=>{
+    const newInput = document.createElement(`input`)
+    newInput.type = `text`
+    inputs.appendChild(newInput)
+})
+
+const removeBtn = document.querySelector(`#usun`)
+removeBtn.addEventListener(`click`, ()=>{
+    const lastInput = inputs.lastElementChild
+    if (lastInput){
+        inputs.removeChild(lastInput)
+    }
 })
