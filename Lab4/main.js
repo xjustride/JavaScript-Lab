@@ -17,6 +17,7 @@ console.log(wczoraj.toISOString()); // zwraca date w formacie ISO (zawsze UTC) t
 let notesDiv = document.querySelector('#notes');
 const addBtn = document.querySelector('#addNoteBtn');
 const clearBtn = document.querySelector('#clearNotesBtn');
+const deleteBtn = document.querySelector('#deleteBtn');
 
 clearBtn.addEventListener('click', () => {
     const tytulNotatki = document.querySelector('#noteTitle');
@@ -35,6 +36,7 @@ addEventListener ('DOMContentLoaded', () => {
     }
     notatki.forEach(notatka => {
         let noteDiv = document.createElement('div');
+        noteDiv.style.backgroundColor = notatka.kolor;
         noteDiv.innerHTML = `
             <h2>${notatka.tytul}</h2>
             <p>${notatka.tresc}</p>
@@ -51,7 +53,8 @@ addEventListener ('DOMContentLoaded', () => {
         const notatka = {
             tytul: tytulNotatki.value,
             tresc: trescNotatki.value,
-            data: Date.now()
+            data: Date.now(),
+            kolor: colorInput.value
         }    
         let notatki = [];
         if (localStorage.getItem('notatki')) {
@@ -61,14 +64,22 @@ addEventListener ('DOMContentLoaded', () => {
         localStorage.setItem('notatki', JSON.stringify(notatki));
         notatki.forEach(notatka => {
             let noteDiv = document.createElement('div');
+            noteDiv.style.backgroundColor = notatka.kolor;
             noteDiv.innerHTML = `
             <h2>${notatka.tytul}</h2>
             <p>${notatka.tresc}</p>
             <p>${new Date(notatka.data).toLocaleString()}</p>
+            <input type="button" value="Usuń" id='{usun}' />
             `;
-            noteDiv.style = backgroundColor = colorInput.value; 
             notesDiv.appendChild(noteDiv);
-        });    
-    });    
+        });
     
+    deleteBtn.addEventListener('click', () => {
+        alert('Czy napewno chcesz usunac wszystkie notatki?');
+        localStorage.removeItem('notatki');
+        notesDiv.innerHTML = '';
+    }
+    );
     
+    });
+
