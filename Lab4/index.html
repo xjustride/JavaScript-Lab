@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotePocket</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button id="deleteBtn">Delete all notes</button>
     <h1>NoteApp</h1>
-    <div class="notes">
-        <h1>Add new note</h1>
-        <input type="text" id="noteTitle" placeholder="Enter title of your note">
-        <br>
-        <input type="text" id="note" placeholder="Enter your note">
-        <br>
+    <div class="container">
+        <h1>Add new note!</h1>
+        <div class="notes">
+                <textarea id="noteTitle" rows="4" cols="30" placeholder="Title of your note"></textarea>
+            <br>
+                <textarea id="note" rows="4" cols="30" placeholder="Your note"></textarea>
+            <br>
+        </div>
         <h2>Take color of your note:</h2>
         <br>
-        <input type="color" id="color" value="#ff0000">
+        <input type="color" id="color" value="#fffff">
         <br>
-        <button id="addNoteBtn">Add note</button>
-        <button id="clearNotesBtn">Clear field</button>
-        <button id="deleteBtn">Delete all notes</button>
-        <div>
-            <h1>Your notes</h1>
-            <div id="notes"></div>
+        <div class="buttons">
+            <button id="addNoteBtn">Add note</button>
+            <button id="clearNotesBtn">Clear field</button>
+        </div>
+    </div>
+    <div class="allNotes">
+        <h1>Your notes: </h1>
         </div>
     </div>
     <script src="main.js"></script>
