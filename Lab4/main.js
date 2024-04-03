@@ -33,6 +33,7 @@ function Note(Title, Value, Color)
     this.noteValue = Value;
     this.noteColor = Color;
     this.created = new Date().toISOString().slice(0, 10) + " " + new Date().toLocaleTimeString().slice(0, 5);
+    this.pinned = false;
 }
 
 function addNewNote(){
@@ -70,7 +71,7 @@ function displayNotes(){
         newNote.innerHTML = `
         <div class = "newNote" style = "background-color: ${note.noteColor}; padding: 40px; border-radius: 20px;">
             <label class="pinezka-checkbox">
-            <input type="checkbox"/>
+            <input type="checkbox" ${note.pinned ? 'checked' : ''}/> 
             <span class="checkmark"></span>
             </label>
             <br>
@@ -92,15 +93,16 @@ function displayNotes(){
         });
         notesDiv.appendChild(newNote);
 
-        const pinezka = newNote.querySelector('.pinezka-checkbox');
-        pinezka.addEventListener('click', () => {
-            notatki.forEach(function(item,i){
-                if(item.id === "kjfdhg87"){
-                  data.splice(i, 1);
-                  data.unshift(item);
-                }
-              });
-        });
+        const pinezka = newNote.querySelector('input[type="checkbox"]');
+        pinezka.addEventListener('change', () => {
+            if(pinezka.checked == true){
+                note.pinned = true; 
+                notatki.splice(notatki.indexOf(note), 1);
+                notatki.unshift(note);
+                localStorage.setItem('data', JSON.stringify(notatki));
+                location.reload();
+            }
+});
     });
 
 }
