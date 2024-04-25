@@ -14,7 +14,6 @@ const sounds = {
 const startButton = document.querySelector(`#startR`);
 const stopButton = document.querySelector(`#endR`);
 const playButton = document.querySelector(`#playR`);
-
 let recordTime = 0;
 
 addEventListener(`keypress`, (ev) => {

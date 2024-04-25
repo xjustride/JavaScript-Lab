@@ -40,5 +40,5 @@ const asyncAdd = async (a, b) => {
     } catch (error) {
       console.log('Błąd:', error);
     }
+    console.log(numbers.reduce((a, b) => a + b, 0))
   })();
-  

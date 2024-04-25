@@ -1,36 +1,41 @@
-.body{  
+.body {  
     background-color: #A360BF;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-#box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#box {
     width: 600px;
     height: 600px;
     background-color: #d99ad5;
     border-radius: 10%;
     border: 10px solid #44e1f2;
+    position: relative;
+    overflow: hidden;
 }
 
-#hole{
+#hole {
     width: 50px;
     height: 50px;
     background-color: black;
     border-radius: 50%;
     position: absolute;
-    display: none;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #ball {
-    position: absolute;
-    width: 50px; 
+    width: 50px;
     height: 50px;
-    background-color: red; 
-    border-radius: 50%; 
-    display: block; 
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 300px;
+    left: 275px; /* Center the ball */
 }

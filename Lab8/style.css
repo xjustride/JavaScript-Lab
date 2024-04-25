@@ -1,0 +1,27 @@
+body, html{
+    background-color: gray;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.weather{
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 250px;
+    background-color: rgb(83, 83, 83);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-search{
+    border-radius: 10px 10px 0 0;
+    margin-top: 100px;
+    margin-left: 100px;
+
+}
+
+.weather-info{
+    margin-top: 20px;
+}
