@@ -44,7 +44,7 @@ function createNoteElement(note) {
             <p class="titleOfNote">Title: ${note.noteTitle}</p>
             <p class="valueOfNote">Content: ${note.noteValue}</p>
             <p class="created">Created: ${note.created}</p>
-            <p class="tags">Tagi: ${note.Tags}</p>
+            <p class="tags">Tagi: ${note.noteTags}</p>
             <button class="deleteNoteBtn">Usuń notatkę</button>
         </div>
         <br>
