@@ -13,29 +13,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button id="deleteBtn">Delete all notes</button>
-    <h1>NoteApp</h1>
-    <div class="container">
-        <h1>Add new note!</h1>
-        <div class="notes">
-                <textarea id="noteTitle" rows="4" cols="30" placeholder="Title of your note"></textarea>
-            <br>
-                <textarea id="note" rows="4" cols="30" placeholder="Your note"></textarea>
-            <br>
+    <header>
+        <h1>NotePocket</h1>
+        <button id="deleteBtn">Usuń wszystkie notatki</button>
+    </header>
+    <main class="container">
+        <div class="note-input">
+            <input id="noteTitle" type="text" placeholder="Tytuł">
+            <textarea id="note" placeholder="Utwórz notatkę..."></textarea>
+            <input id="noteTags" type="text" placeholder="Tagi (oddzielone przecinkami)">
+            <div class="note-options">
+                <input type="color" id="color" value="#ffffff">
+                <div class="note-actions">
+                    <button id="addNoteBtn">Dodaj notatkę</button>
+                    <button id="clearNotesBtn">Wyczyść pola</button>
+                </div>
+            </div>
         </div>
-        <h2>Take color of your note:</h2>
-        <br>
-        <input type="color" id="color" value="#fffff">
-        <br>
-        <div class="buttons">
-            <button id="addNoteBtn">Add note</button>
-            <button id="clearNotesBtn">Clear field</button>
+        <div class="allNotes">
+            <h2>Twoje notatki:</h2>
         </div>
-    </div>
-    <div class="allNotes">
-        <h1>Your notes: </h1>
-        </div>
-    </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
