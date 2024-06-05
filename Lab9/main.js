@@ -4,18 +4,21 @@ const startButton = document.querySelector('#startButton');
 const resetButton = document.querySelector('#resetButton');
 const numBallsInput = document.querySelector('#numBalls');
 const distanceInput = document.querySelector('#distance');
+const forceInput = document.querySelector('#force');
 
 let balls = [];
 let animationFrameId;
 let numBalls = parseInt(numBallsInput.value);
 let maxDistance = parseInt(distanceInput.value);
+let force = parseInt(forceInput.value);
+let mouseX = 0;
+let mouseY = 0;
 
 function random(min, max) {
     return Math.random() * (max - min) + min;
 }
 
 function createBalls(count) {
-    balls = [];
     for (let i = 0; i < count; i++) {
         balls.push({
             x: random(0, canvas.width),
@@ -39,6 +42,17 @@ function updateBalls() {
 
         if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
             ball.vy *= -1;
+        }
+
+        let dx = ball.x - mouseX;
+        let dy = ball.y - mouseY;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < maxDistance) {
+            let angle = Math.atan2(dy, dx);
+            let attractionForce = (maxDistance - distance) / maxDistance * force;
+            ball.vx += Math.cos(angle) * attractionForce;
+            ball.vy += Math.sin(angle) * attractionForce;
         }
     }
 }
@@ -78,9 +92,34 @@ function animate() {
     animationFrameId = requestAnimationFrame(animate);
 }
 
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = event.clientX - rect.left;
+    mouseY = event.clientY - rect.top;
+});
+
+canvas.addEventListener('click', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const clickY = event.clientY - rect.top;
+
+    balls = balls.filter(ball => {
+        let dx = ball.x - clickX;
+        let dy = ball.y - clickY;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < ball.radius) {
+            createBalls(2);
+            return false;
+        }
+        return true;
+    });
+});
+
 startButton.addEventListener('click', () => {
     numBalls = parseInt(numBallsInput.value);
     maxDistance = parseInt(distanceInput.value);
+    force = parseInt(forceInput.value);
+    balls = [];
     createBalls(numBalls);
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -93,6 +132,7 @@ resetButton.addEventListener('click', () => {
         cancelAnimationFrame(animationFrameId);
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    balls = [];
 });
 
 createBalls(numBalls);
