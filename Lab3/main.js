@@ -23,6 +23,14 @@ const selectChannel2 = document.querySelector(`#selectC2`);
 const selectChannel3 = document.querySelector(`#selectC3`);
 const selectChannel4 = document.querySelector(`#selectC4`);
 const soundButtons = document.querySelectorAll('.sound-button');
+let bpmDisplay = document.querySelector('#bpm');
+let decreaseButton = document.querySelector('#decrease');
+let increaseButton = document.querySelector('#increase');
+let slider = document.querySelector('#slider');
+let startStopButton = document.querySelector('#startStop');
+let bpm = 120;
+let intervalId;
+let isPlaying = false;
 
 let recordTime = 0;
 let isRecording = false;
@@ -147,4 +155,43 @@ function highlightSelectedChannel(channel) {
         button.classList.remove('selected');
     });
     document.querySelector(`#selectC${channel}`).classList.add('selected');
+}
+
+function updateBPM(value) {
+    bpm = value;
+    bpmDisplay.textContent = bpm;
+}
+
+decreaseButton.addEventListener('click', () => {
+    if (bpm > 40) {
+        updateBPM(bpm - 1);
+        slider.value = bpm;
+    }
+});
+
+increaseButton.addEventListener('click', () => {
+    if (bpm < 208) {
+        updateBPM(bpm + 1);
+        slider.value = bpm;
+    }
+});
+
+slider.addEventListener('input', (e) => {
+    updateBPM(e.target.value);
+});
+
+startStopButton.addEventListener('click', () => {
+    if (isPlaying) {
+        clearInterval(intervalId);
+        startStopButton.textContent = '▶';
+    } else {
+        intervalId = setInterval(playClick, (60 / bpm) * 1000);
+        startStopButton.textContent = '⏸';
+    }
+    isPlaying = !isPlaying;
+});
+
+function playClick() {
+    const click = new Audio('https://www.soundjay.com/button/beep-07.wav');
+    click.play();
 }

@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="metronome-container">
+        <h1>Metronome</h1>
+        <div class="display">
+            <span id="bpm">120</span> BPM
+        </div>
+        <div class="controls">
+            <button id="decrease">-</button>
+            <input type="range" id="slider" min="40" max="208" value="120">
+            <button id="increase">+</button>
+        </div>
+        <button id="startStop" class="start">▶</button>
+    </div>
     <div class="container">
         <div class="controls">
             <button id="startR" class="control-button">Start Recording</button>

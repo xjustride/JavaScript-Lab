@@ -96,5 +96,34 @@ body{
     background-color: black;
     color: white;
     font-size: 20px;
-
 }
+
+.prev:hover,.next:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.startStop{
+    width: 100px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+.start{
+    background-color: green;
+}
+.stop{
+    background-color: red;
+}
+

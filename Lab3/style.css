@@ -45,3 +45,43 @@ body {
 .select-button.selected {
     background-color: #1ed760;
 }
+
+.metronome-container {
+    background-color: #191414;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.display {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button, input[type="range"] {
+    margin: 0 10px;
+}
+
+button {
+    background-color: #00bcd4;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:active {
+    background-color: #0097a7;
+}
+
+input[type="range"] {
+    width: 200px;
+}
