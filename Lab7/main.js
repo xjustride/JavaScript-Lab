@@ -1,7 +1,7 @@
-const box = document.querySelector('.box'); // Wybierz element o klasie 'box'
-let ball = document.querySelector('#ball'); // Wybierz element o id 'ball'
-const hole = document.querySelector('#hole'); // Wybierz element o id 'hole'
-const scoreDisplay = document.querySelector('#score'); // Wybierz element o id 'score'
+const box = document.querySelector('.box'); 
+let ball = document.querySelector('#ball'); 
+const hole = document.querySelector('#hole'); 
+const scoreDisplay = document.querySelector('#score'); 
 
 let ballX = 275; // Początkowa pozycja X piłki
 let ballY = 300; // Początkowa pozycja Y piłki
