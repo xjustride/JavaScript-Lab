@@ -104,7 +104,7 @@ function displayNotes() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM fully loaded and parsed");
+    console.log("u mnie działa");
     displayNotes();
 });
 
@@ -117,3 +117,19 @@ deleteBtn.addEventListener('click', () => {
         notesDiv.innerHTML = '';
     }
 });
+const searchBtn = document.querySelector('#searchBtn');
+searchBtn.addEventListener('click', searchNotes);
+
+function searchNotes() {
+    const searchKeyword = document.querySelector('#search').value.toLowerCase();
+    const filteredNotes = notatki.filter(note => {
+        const titleMatch = note.noteTitle.toLowerCase().includes(searchKeyword);
+        const tagsMatch = note.noteTags.toLowerCase().includes(searchKeyword);
+        return titleMatch || tagsMatch;
+    });
+    notesDiv.innerHTML = '';
+    filteredNotes.forEach(note => {
+        const newNote = createNoteElement(note);
+        notesDiv.appendChild(newNote);
+    });
+}

@@ -6,8 +6,8 @@ body {
     background-color: #254336;
 }
 canvas {
-    border: 1px solid white;
-    background-color: #6B8A7A;
+    border: 1px solid black;
+    background-color: #ffff;
 }
 .controls {
     margin-bottom: 10px;

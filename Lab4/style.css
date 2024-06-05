@@ -76,7 +76,7 @@ header h1 {
   gap: 10px;
 }
 
-#addNoteBtn, #clearNotesBtn {
+#addNoteBtn, #clearNotesBtn, #searchBtn {
   background-color: #5f6368;
   color: #e8eaed;
   border: none;

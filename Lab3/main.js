@@ -157,10 +157,15 @@ function highlightSelectedChannel(channel) {
     document.querySelector(`#selectC${channel}`).classList.add('selected');
 }
 
-function updateBPM(value) {
-    bpm = value;
+function updateBPM(newBpm) {
+    bpm = newBpm;
+    if (isPlaying) {
+        clearInterval(intervalId);
+        intervalId = setInterval(playClick, (60 / bpm) * 1000);
+    }
     bpmDisplay.textContent = bpm;
 }
+
 
 decreaseButton.addEventListener('click', () => {
     if (bpm > 40) {
@@ -192,6 +197,6 @@ startStopButton.addEventListener('click', () => {
 });
 
 function playClick() {
-    const click = new Audio('https://www.soundjay.com/button/beep-07.wav');
+    const click = new Audio('/Lab3/sounds/metronome.mp3');
     click.play();
 }
